@@ -9,11 +9,12 @@
 require_once('connect.php.php');
 
 $bdd = connect();
-$email=$_GET['email'];
-$mot_de_passe =$_GET['mot_de_passe'];
+$email=$_POST['email'];
+$mot_de_passe =$_POST['mot_de_passe'];
 
-$sql = 'SELECT * FROM user WHERE email = "'.$email.'" AND mot_de_passe="'.$mot_de_passe.'"';
-$req = $bdd->query($sql);
+$sql=$bdd->prepare('select * from user where email=? and mot_de_passe=?');
+$sql->execute(array($email,$mot_de_passe));
+
 $count=$req->rowCount($req);
 if ($count==1) {
     if ($data =$req->fetch()) {
