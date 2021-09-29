@@ -6,7 +6,7 @@
  * Time: 14:21
  */
 
-require_once 'classeConnexionUser.php';
+require_once 'connect.php';
 
 if (isset($_POST['valider'])){
     $email=$_POST['email'];
@@ -17,7 +17,7 @@ if (isset($_POST['valider'])){
 }
 ?>
 
-<h1>connnexion</h1>
+
 <form action="" method="post">
     <h1>connexion</h1>
     <input type="email" name="email">
