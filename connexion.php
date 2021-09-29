@@ -15,9 +15,9 @@ $mot_de_passe =sha1($_POST['mot_de_passe']);
 if ($email !=null and $mot_de_passe !=null){
     $sql=$bdd->prepare('select * from user where email=? and mot_de_passe=?');
     $sql->execute(array($email,$mot_de_passe));
-    $count=$req->rowCount($req);
+    $count=$sql->rowCount($sql);
     if ($count==1) {
-        if ($data =$req->fetch()) {
+        if ($data =$sql->fetch()) {
             echo json_encode(array('status' => "OK",'email'=>$email));
             $_SESSION['email']=$data['email'];
 }
